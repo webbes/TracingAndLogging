@@ -1,0 +1,5 @@
+D:\Source\TracingAndLogging\TracingAndLogging\bin\TracingAndLogging.dll.config
+D:\Source\TracingAndLogging\TracingAndLogging\bin\TracingAndLogging.dll
+D:\Source\TracingAndLogging\TracingAndLogging\bin\TracingAndLogging.pdb
+D:\Source\TracingAndLogging\TracingAndLogging\obj\Debug\TracingAndLogging.dll
+D:\Source\TracingAndLogging\TracingAndLogging\obj\Debug\TracingAndLogging.pdb
