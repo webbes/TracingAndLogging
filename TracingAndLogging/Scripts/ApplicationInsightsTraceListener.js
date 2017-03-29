@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-define(["require", "exports", "Diagnostics/TraceLevel", "Diagnostics/TraceListener", "AI"], function (require, exports, TraceLevel_1, TraceListener_1) {
+define(["require", "exports", "Diagnostics/TraceListener", "AI"], function (require, exports, TraceListener_1) {
     "use strict";
     var ApplicationInsightsTraceListener = (function (_super) {
         __extends(ApplicationInsightsTraceListener, _super);
@@ -20,20 +20,25 @@ define(["require", "exports", "Diagnostics/TraceLevel", "Diagnostics/TraceListen
             this._appInsights = init.loadAppInsights();
         }
         ApplicationInsightsTraceListener.prototype.NotifyInternal = function (sender, traceEvent) {
-            switch (traceEvent.TraceLevel) {
-                case TraceLevel_1.TraceLevel.Error:
-                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Error);
-                    break;
-                case TraceLevel_1.TraceLevel.Warning:
-                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Warning);
-                    break;
-                case TraceLevel_1.TraceLevel.Info:
-                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Information);
-                    break;
-                case TraceLevel_1.TraceLevel.Verbose:
-                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Verbose);
-                    break;
-            }
+            // fastest:
+            var aiSeverityLevel = 4 - traceEvent.TraceLevel;
+            // clearest:
+            // let aiSeverityLevel: AI.SeverityLevel;
+            // switch (traceEvent.TraceLevel) {
+            //     case TraceLevel.Error:
+            //         aiSeverityLevel = AI.SeverityLevel.Error;
+            //         break;
+            //     case TraceLevel.Warning:
+            //         aiSeverityLevel = AI.SeverityLevel.Warning;
+            //         break;
+            //     case TraceLevel.Info:
+            //         aiSeverityLevel = AI.SeverityLevel.Information;
+            //         break;
+            //     case TraceLevel.Verbose:
+            //         aiSeverityLevel = AI.SeverityLevel.Verbose;
+            //         break;
+            // }
+            this._appInsights.trackTrace(traceEvent.Message, null, aiSeverityLevel);
         };
         return ApplicationInsightsTraceListener;
     }(TraceListener_1.TraceListener));

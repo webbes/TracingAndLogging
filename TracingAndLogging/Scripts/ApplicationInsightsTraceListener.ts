@@ -25,31 +25,25 @@ export class ApplicationInsightsTraceListener extends TraceListener {
 
 
     protected NotifyInternal(sender: ITraceSource, traceEvent: ITraceEvent): void {
-        switch (traceEvent.TraceLevel) {
-            case TraceLevel.Error:
-                this._appInsights.trackTrace(
-                    traceEvent.Message,
-                    null,
-                    AI.SeverityLevel.Error);
-                break;
-            case TraceLevel.Warning:
-                this._appInsights.trackTrace(
-                    traceEvent.Message,
-                    null,
-                    AI.SeverityLevel.Warning);
-                break;
-            case TraceLevel.Info:
-                this._appInsights.trackTrace(
-                    traceEvent.Message,
-                    null,
-                    AI.SeverityLevel.Information);
-                break;
-            case TraceLevel.Verbose:
-                this._appInsights.trackTrace(
-                    traceEvent.Message,
-                    null,
-                    AI.SeverityLevel.Verbose);
-                break;
-        }
+        // fastest:
+        let aiSeverityLevel: AI.SeverityLevel = 4 - traceEvent.TraceLevel;
+        // clearest:
+        // let aiSeverityLevel: AI.SeverityLevel;
+        // switch (traceEvent.TraceLevel) {
+        //     case TraceLevel.Error:
+        //         aiSeverityLevel = AI.SeverityLevel.Error;
+        //         break;
+        //     case TraceLevel.Warning:
+        //         aiSeverityLevel = AI.SeverityLevel.Warning;
+        //         break;
+        //     case TraceLevel.Info:
+        //         aiSeverityLevel = AI.SeverityLevel.Information;
+        //         break;
+        //     case TraceLevel.Verbose:
+        //         aiSeverityLevel = AI.SeverityLevel.Verbose;
+        //         break;
+        // }
+
+        this._appInsights.trackTrace(traceEvent.Message, null, aiSeverityLevel);
     }
 }
