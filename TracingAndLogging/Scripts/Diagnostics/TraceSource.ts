@@ -1,33 +1,37 @@
-﻿import { TraceEvent } from "./TraceEvent";
-import { TraceLevel } from "./TraceLevel";
+﻿import { ITraceEvent } from "./ITraceEvent";
+import { ITraceSource } from "./ITraceSource";
+import { ITraceFilter } from "./ITraceFilter";
 import { ITraceListener } from "./ITraceListener";
 
-export class TraceSource {
-    constructor(traceLevel: TraceLevel, ...listeners: ITraceListener[]) {
-        this._traceLevel = traceLevel;
+export class TraceSource implements ITraceSource {
+    constructor(traceFilter: ITraceFilter, ...listeners: ITraceListener[]) {
+        this.TraceFilter = traceFilter;
         this._listeners = new Array<ITraceListener>();
         this._listeners.push(...listeners);
     }
 
-    private _traceLevel: TraceLevel;
-    public get TraceLevel(): TraceLevel {
-        return this._traceLevel;
+    private _traceFilter: ITraceFilter;
+    public get TraceFilter(): ITraceFilter {
+        return this._traceFilter;
     }
 
-    public set TraceLevel(value: TraceLevel) {
-        this._traceLevel = value;
+    public set TraceFilter(value: ITraceFilter) {
+        if (!value) {
+            throw new Error("Value cannot be null");
+        }
+
+        this._traceFilter = value;
     }
 
-    public Trace(traceLevel: TraceLevel, message: string): void {
-        const traceEvent: TraceEvent = new TraceEvent(traceLevel, message);
+    public Trace(traceEvent: ITraceEvent): void {
         this.OnTrace(traceEvent);
     }
 
-    protected OnTrace(event: TraceEvent): void {
-        if (this._traceLevel >= event.TraceLevel) {
+    protected OnTrace(traceEvent: ITraceEvent): void {
+        if (this.TraceFilter.ShouldTrace(this, traceEvent)) {
             this._listeners.forEach((listener:ITraceListener) => {
                 try {
-                    listener.Notify(this, event);
+                    listener.Notify(this, traceEvent);
                 } catch(ex) {
                     // empty catch to prevent one listener error blocking others
                 }

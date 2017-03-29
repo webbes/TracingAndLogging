@@ -1,39 +1,31 @@
-define(["require", "exports", "./TraceLevel"], function (require, exports, TraceLevel_1) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+define(["require", "exports", "./TraceLevel", "./TraceListener"], function (require, exports, TraceLevel_1, TraceListener_1) {
     "use strict";
-    var ConsoleLogTraceListener = (function () {
-        function ConsoleLogTraceListener(traceLevel) {
-            this._traceLevel = traceLevel;
+    var ConsoleLogTraceListener = (function (_super) {
+        __extends(ConsoleLogTraceListener, _super);
+        function ConsoleLogTraceListener(traceFilter) {
+            _super.call(this, traceFilter);
         }
-        Object.defineProperty(ConsoleLogTraceListener.prototype, "TraceLevel", {
-            get: function () {
-                return this._traceLevel;
-            },
-            set: function (value) {
-                if (this._traceLevel !== value) {
-                    this._traceLevel = value;
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        ConsoleLogTraceListener.prototype.Notify = function (sender, traceEvent) {
-            if (this._traceLevel >= traceEvent.TraceLevel) {
-                switch (traceEvent.TraceLevel) {
-                    case TraceLevel_1.TraceLevel.Error:
-                        console.error(traceEvent.Message);
-                        break;
-                    case TraceLevel_1.TraceLevel.Warning:
-                        console.warn(traceEvent.Message);
-                        break;
-                    case TraceLevel_1.TraceLevel.Info:
-                    case TraceLevel_1.TraceLevel.Verbose:
-                        console.log(traceEvent.Message);
-                        break;
-                }
+        ConsoleLogTraceListener.prototype.NotifyInternal = function (sender, traceEvent) {
+            switch (traceEvent.TraceLevel) {
+                case TraceLevel_1.TraceLevel.Error:
+                    console.error(traceEvent.Message);
+                    break;
+                case TraceLevel_1.TraceLevel.Warning:
+                    console.warn(traceEvent.Message);
+                    break;
+                case TraceLevel_1.TraceLevel.Info:
+                case TraceLevel_1.TraceLevel.Verbose:
+                    console.log(traceEvent.Message);
+                    break;
             }
         };
         return ConsoleLogTraceListener;
-    }());
+    }(TraceListener_1.TraceListener));
     exports.ConsoleLogTraceListener = ConsoleLogTraceListener;
 });
 //# sourceMappingURL=ConsoleLogTraceListener.js.map

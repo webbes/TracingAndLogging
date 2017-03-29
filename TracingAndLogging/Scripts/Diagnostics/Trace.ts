@@ -1,5 +1,7 @@
 ﻿import { ITraceSource } from "./ITraceSource";
 import { TraceLevel } from "./TraceLevel";
+import { ITraceEvent } from "./ITraceEvent";
+import { TraceEvent } from "./TraceEvent";
 
 export class Trace {
     private static _traceSources: Array<ITraceSource> = new Array<ITraceSource>();
@@ -8,26 +10,29 @@ export class Trace {
     }
 
     public static Info(message: string): void {
-        this._traceSources.forEach((value: ITraceSource) => {
-            value.Trace(TraceLevel.Info, message);
-        });
+        Trace.Level(TraceLevel.Info, message);
     }
 
     public static Error(message: string): void {
-        this._traceSources.forEach((value: ITraceSource) => {
-            value.Trace(TraceLevel.Error, message);
-        });
+        Trace.Level(TraceLevel.Error, message);
     }
 
     public static Verbose(message: string): void {
-        this._traceSources.forEach((value: ITraceSource) => {
-            value.Trace(TraceLevel.Verbose, message);
-        });
+        Trace.Level(TraceLevel.Verbose, message);
     }
 
     public static Warning(message: string): void {
+        Trace.Level(TraceLevel.Warning, message);
+    }
+
+    public static Level(traceLevel: TraceLevel, message: string) {
+        const traceEvent = new TraceEvent(traceLevel, message);
+        Trace.Event(traceEvent);
+    }
+
+    public static Event(traceEvent: ITraceEvent) {
         this._traceSources.forEach((value: ITraceSource) => {
-            value.Trace(TraceLevel.Warning, message);
+            value.Trace(traceEvent);
         });
     }
 }

@@ -1,6 +1,7 @@
-﻿import { TraceLevel } from "./TraceLevel";
+﻿import { ITraceEvent } from "./ITraceEvent";
+import { TraceLevel } from "./TraceLevel";
 
-export class TraceEvent {
+export class TraceEvent implements ITraceEvent {
     constructor(traceLevel: TraceLevel, message: string) {
         this._traceLevel = traceLevel;
         this._message = message;

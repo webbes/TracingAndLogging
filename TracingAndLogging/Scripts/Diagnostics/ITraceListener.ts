@@ -1,5 +1,6 @@
-﻿import { TraceEvent } from "./TraceEvent";
+﻿import { ITraceEvent } from "./ITraceEvent";
+import { ITraceSource } from "./ITraceSource";
 
 export interface ITraceListener {
-    Notify(sender: any, event:TraceEvent): void;
+    Notify(sender: ITraceSource, event:ITraceEvent): void;
 }

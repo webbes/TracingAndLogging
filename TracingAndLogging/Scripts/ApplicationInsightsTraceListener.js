@@ -1,8 +1,14 @@
-define(["require", "exports", "Diagnostics/TraceLevel", "AI"], function (require, exports, TraceLevel_1) {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+define(["require", "exports", "Diagnostics/TraceLevel", "Diagnostics/TraceListener", "AI"], function (require, exports, TraceLevel_1, TraceListener_1) {
     "use strict";
-    var ApplicationInsightsTraceListener = (function () {
-        function ApplicationInsightsTraceListener(traceLevel, instrumentationKey) {
-            this._traceLevel = traceLevel;
+    var ApplicationInsightsTraceListener = (function (_super) {
+        __extends(ApplicationInsightsTraceListener, _super);
+        function ApplicationInsightsTraceListener(traceFilter, instrumentationKey) {
+            _super.call(this, traceFilter);
             var snippet = {
                 config: {
                     instrumentationKey: instrumentationKey
@@ -13,38 +19,24 @@ define(["require", "exports", "Diagnostics/TraceLevel", "AI"], function (require
             var init = new Microsoft.ApplicationInsights.Initialization(snippet);
             this._appInsights = init.loadAppInsights();
         }
-        Object.defineProperty(ApplicationInsightsTraceListener.prototype, "TraceLevel", {
-            get: function () {
-                return this._traceLevel;
-            },
-            set: function (value) {
-                if (this._traceLevel !== value) {
-                    this._traceLevel = value;
-                }
-            },
-            enumerable: true,
-            configurable: true
-        });
-        ApplicationInsightsTraceListener.prototype.Notify = function (sender, traceEvent) {
-            if (this._traceLevel >= traceEvent.TraceLevel) {
-                switch (traceEvent.TraceLevel) {
-                    case TraceLevel_1.TraceLevel.Error:
-                        this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Error);
-                        break;
-                    case TraceLevel_1.TraceLevel.Warning:
-                        this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Warning);
-                        break;
-                    case TraceLevel_1.TraceLevel.Info:
-                        this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Information);
-                        break;
-                    case TraceLevel_1.TraceLevel.Verbose:
-                        this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Verbose);
-                        break;
-                }
+        ApplicationInsightsTraceListener.prototype.NotifyInternal = function (sender, traceEvent) {
+            switch (traceEvent.TraceLevel) {
+                case TraceLevel_1.TraceLevel.Error:
+                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Error);
+                    break;
+                case TraceLevel_1.TraceLevel.Warning:
+                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Warning);
+                    break;
+                case TraceLevel_1.TraceLevel.Info:
+                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Information);
+                    break;
+                case TraceLevel_1.TraceLevel.Verbose:
+                    this._appInsights.trackTrace(traceEvent.Message, null, AI.SeverityLevel.Verbose);
+                    break;
             }
         };
         return ApplicationInsightsTraceListener;
-    }());
+    }(TraceListener_1.TraceListener));
     exports.ApplicationInsightsTraceListener = ApplicationInsightsTraceListener;
 });
 //# sourceMappingURL=ApplicationInsightsTraceListener.js.map

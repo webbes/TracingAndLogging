@@ -1,37 +1,26 @@
-﻿import { TraceEvent } from "./TraceEvent";
+﻿import { ITraceEvent } from "./ITraceEvent";
+import { ITraceFilter } from "./ITraceFilter";
+import { ITraceSource } from "./ITraceSource";
 import { TraceLevel } from "./TraceLevel";
-import { ITraceListener } from "./ITraceListener";
+import { TraceListener } from "./TraceListener";
 
-export class ConsoleLogTraceListener implements ITraceListener {
-    constructor(traceLevel: TraceLevel) {
-        this._traceLevel = traceLevel;
+export class ConsoleLogTraceListener extends TraceListener {
+    constructor(traceFilter: ITraceFilter) {
+        super(traceFilter);
     }
 
-    private _traceLevel: TraceLevel;
-    public get TraceLevel(): TraceLevel {
-        return this._traceLevel;
-    }
-
-    public set TraceLevel(value: TraceLevel) {
-        if (this._traceLevel !== value) {
-            this._traceLevel = value;
-        }
-    }
-
-    public Notify(sender: any, traceEvent: TraceEvent): void {
-        if (this._traceLevel >= traceEvent.TraceLevel) {
-            switch (traceEvent.TraceLevel) {
-                case TraceLevel.Error:
-                    console.error(traceEvent.Message);
-                    break;
-                case TraceLevel.Warning:
-                    console.warn(traceEvent.Message);
-                    break;
-                case TraceLevel.Info:
-                case TraceLevel.Verbose:
-                    console.log(traceEvent.Message);
-                    break;
-            }
+    protected NotifyInternal(sender: ITraceSource, traceEvent: ITraceEvent): void {
+        switch (traceEvent.TraceLevel) {
+            case TraceLevel.Error:
+                console.error(traceEvent.Message);
+                break;
+            case TraceLevel.Warning:
+                console.warn(traceEvent.Message);
+                break;
+            case TraceLevel.Info:
+            case TraceLevel.Verbose:
+                console.log(traceEvent.Message);
+                break;
         }
     }
 }

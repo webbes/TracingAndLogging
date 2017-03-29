@@ -1,36 +1,38 @@
-define(["require", "exports", "./TraceEvent"], function (require, exports, TraceEvent_1) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
     var TraceSource = (function () {
-        function TraceSource(traceLevel) {
+        function TraceSource(traceFilter) {
             var listeners = [];
             for (var _i = 1; _i < arguments.length; _i++) {
                 listeners[_i - 1] = arguments[_i];
             }
-            this._traceLevel = traceLevel;
+            this.TraceFilter = traceFilter;
             this._listeners = new Array();
             (_a = this._listeners).push.apply(_a, listeners);
             var _a;
         }
-        Object.defineProperty(TraceSource.prototype, "TraceLevel", {
+        Object.defineProperty(TraceSource.prototype, "TraceFilter", {
             get: function () {
-                return this._traceLevel;
+                return this._traceFilter;
             },
             set: function (value) {
-                this._traceLevel = value;
+                if (!value) {
+                    throw new Error("Value cannot be null");
+                }
+                this._traceFilter = value;
             },
             enumerable: true,
             configurable: true
         });
-        TraceSource.prototype.Trace = function (traceLevel, message) {
-            var traceEvent = new TraceEvent_1.TraceEvent(traceLevel, message);
+        TraceSource.prototype.Trace = function (traceEvent) {
             this.OnTrace(traceEvent);
         };
-        TraceSource.prototype.OnTrace = function (event) {
+        TraceSource.prototype.OnTrace = function (traceEvent) {
             var _this = this;
-            if (this._traceLevel >= event.TraceLevel) {
+            if (this.TraceFilter.ShouldTrace(this, traceEvent)) {
                 this._listeners.forEach(function (listener) {
                     try {
-                        listener.Notify(_this, event);
+                        listener.Notify(_this, traceEvent);
                     }
                     catch (ex) {
                     }

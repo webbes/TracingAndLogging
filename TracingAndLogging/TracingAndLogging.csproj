@@ -29,6 +29,12 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\AI\ai.d.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\BooleanFilter.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\ITraceEvent.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\ITraceFilter.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\LocalOnlyFilter.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\TraceLevelFilter.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\TraceListener.ts" />
     <TypeScriptCompile Include="Scripts\Main.ts" />
     <TypeScriptCompile Include="Scripts\ApplicationInsightsTraceListener.ts" />
     <TypeScriptCompile Include="Scripts\Start_RequireJS.ts" />
