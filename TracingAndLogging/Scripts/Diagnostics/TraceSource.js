@@ -25,12 +25,9 @@ define(["require", "exports"], function (require, exports) {
             configurable: true
         });
         TraceSource.prototype.Trace = function (traceEvent) {
-            this.OnTrace(traceEvent);
-        };
-        TraceSource.prototype.OnTrace = function (traceEvent) {
             var _this = this;
             if (this.TraceFilter.ShouldTrace(this, traceEvent)) {
-                this._listeners.forEach(function (listener) {
+                this.Listeners.forEach(function (listener) {
                     try {
                         listener.Notify(_this, traceEvent);
                     }

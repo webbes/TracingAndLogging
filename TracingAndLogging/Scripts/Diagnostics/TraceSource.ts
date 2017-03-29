@@ -24,15 +24,11 @@ export class TraceSource implements ITraceSource {
     }
 
     public Trace(traceEvent: ITraceEvent): void {
-        this.OnTrace(traceEvent);
-    }
-
-    protected OnTrace(traceEvent: ITraceEvent): void {
         if (this.TraceFilter.ShouldTrace(this, traceEvent)) {
-            this._listeners.forEach((listener:ITraceListener) => {
+            this.Listeners.forEach((listener: ITraceListener) => {
                 try {
                     listener.Notify(this, traceEvent);
-                } catch(ex) {
+                } catch (ex) {
                     // empty catch to prevent one listener error blocking others
                 }
             });

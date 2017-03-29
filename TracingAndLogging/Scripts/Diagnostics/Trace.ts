@@ -31,7 +31,7 @@ export class Trace {
     }
 
     public static Event(traceEvent: ITraceEvent): void {
-        this._traceSources.forEach((value: ITraceSource) => {
+        this.TraceSources.forEach((value: ITraceSource) => {
             value.Trace(traceEvent);
         });
     }
