@@ -33,6 +33,7 @@
     <TypeScriptCompile Include="Scripts\Diagnostics\ITraceEvent.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\ITraceFilter.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\LocalOnlyFilter.ts" />
+    <TypeScriptCompile Include="Scripts\Diagnostics\QueryStringFilter.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\TraceLevelFilter.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\TraceListener.ts" />
     <TypeScriptCompile Include="Scripts\Main.ts" />

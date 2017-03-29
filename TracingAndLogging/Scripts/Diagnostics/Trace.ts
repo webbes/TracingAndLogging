@@ -25,12 +25,12 @@ export class Trace {
         Trace.Level(TraceLevel.Warning, message);
     }
 
-    public static Level(traceLevel: TraceLevel, message: string) {
-        const traceEvent = new TraceEvent(traceLevel, message);
+    public static Level(traceLevel: TraceLevel, message: string): void {
+        const traceEvent: ITraceEvent = new TraceEvent(traceLevel, message);
         Trace.Event(traceEvent);
     }
 
-    public static Event(traceEvent: ITraceEvent) {
+    public static Event(traceEvent: ITraceEvent): void {
         this._traceSources.forEach((value: ITraceSource) => {
             value.Trace(traceEvent);
         });
