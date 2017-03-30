@@ -20,9 +20,9 @@ define(["require", "exports"], function (require, exports) {
         QueryStringFilter.prototype.Initialize = function () {
             if (!this._initialized) {
                 this._shouldTrace = false;
-                var kvps = location.search.substr(1).split('&');
+                var kvps = location.search.substr(1).split("&");
                 for (var i = 0; i < kvps.length; ++i) {
-                    var kvp = kvps[i].split('=', 2);
+                    var kvp = kvps[i].split("=", 2);
                     if (kvp[0] === this.QueryStringName) {
                         this._shouldTrace = true;
                         break;

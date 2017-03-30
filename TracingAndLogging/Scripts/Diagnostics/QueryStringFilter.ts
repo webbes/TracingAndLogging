@@ -18,10 +18,10 @@ export class QueryStringFilter implements ITraceFilter {
         if (!this._initialized) {
             this._shouldTrace = false;
 
-            const kvps = location.search.substr(1).split('&');
+            const kvps: string[] = location.search.substr(1).split("&");
 
-            for (var i = 0; i < kvps.length; ++i) {
-                var kvp = kvps[i].split('=', 2);
+            for (var i: number = 0; i < kvps.length; ++i) {
+                const kvp: string[] = kvps[i].split("=", 2);
                 if (kvp[0] === this.QueryStringName) {
                     this._shouldTrace = true;
                     break;
