@@ -17,9 +17,9 @@ define(["require", "exports"], function (require, exports) {
             enumerable: true,
             configurable: true
         });
-        TraceListener.prototype.Notify = function (traceSource, traceEvent) {
+        TraceListener.prototype.Trace = function (traceSource, traceEvent) {
             if (this.TraceFilter.ShouldTrace(traceSource, traceEvent)) {
-                this.NotifyInternal(traceSource, traceEvent);
+                this.OnShouldTrace(traceSource, traceEvent);
             }
         };
         return TraceListener;

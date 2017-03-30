@@ -27,8 +27,12 @@ define(["require", "exports", "./TraceLevel", "./TraceEvent"], function (require
             Trace.Event(traceEvent);
         };
         Trace.Event = function (traceEvent) {
-            this.TraceSources.forEach(function (value) {
-                value.Trace(traceEvent);
+            this.TraceSources.forEach(function (traceSource) {
+                try {
+                    traceSource.Trace(traceEvent);
+                }
+                catch (ex) {
+                }
             });
         };
         Trace._traceSources = new Array();

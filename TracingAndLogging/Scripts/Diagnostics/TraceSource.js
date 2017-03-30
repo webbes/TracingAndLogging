@@ -26,15 +26,16 @@ define(["require", "exports"], function (require, exports) {
         });
         TraceSource.prototype.Trace = function (traceEvent) {
             var _this = this;
-            if (this.TraceFilter.ShouldTrace(this, traceEvent)) {
-                this.Listeners.forEach(function (listener) {
-                    try {
-                        listener.Notify(_this, traceEvent);
-                    }
-                    catch (ex) {
-                    }
-                });
+            if (!this.TraceFilter.ShouldTrace(this, traceEvent)) {
+                return;
             }
+            this.Listeners.forEach(function (listener) {
+                try {
+                    listener.Trace(_this, traceEvent);
+                }
+                catch (ex) {
+                }
+            });
         };
         Object.defineProperty(TraceSource.prototype, "Listeners", {
             get: function () {

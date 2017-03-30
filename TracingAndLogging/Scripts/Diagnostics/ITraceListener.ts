@@ -2,5 +2,5 @@
 import { ITraceSource } from "./ITraceSource";
 
 export interface ITraceListener {
-    Notify(sender: ITraceSource, event:ITraceEvent): void;
+    Trace(sender: ITraceSource, event:ITraceEvent): void;
 }

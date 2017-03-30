@@ -3,7 +3,7 @@
 import { ITraceEvent } from "Diagnostics/ITraceEvent";
 import { ITraceFilter } from "Diagnostics/ITraceFilter";
 import { ITraceSource } from "Diagnostics/ITraceSource";
-import { TraceLevel } from "Diagnostics/TraceLevel";
+// import { TraceLevel } from "Diagnostics/TraceLevel";
 import { TraceListener } from "Diagnostics/TraceListener";
 
 export class ApplicationInsightsTraceListener extends TraceListener {
@@ -24,9 +24,9 @@ export class ApplicationInsightsTraceListener extends TraceListener {
     }
 
 
-    protected NotifyInternal(sender: ITraceSource, traceEvent: ITraceEvent): void {
+    protected OnShouldTrace(sender: ITraceSource, traceEvent: ITraceEvent): void {
         // fastest:
-        let aiSeverityLevel: AI.SeverityLevel = 4 - traceEvent.TraceLevel;
+        const aiSeverityLevel: AI.SeverityLevel = 4 - traceEvent.TraceLevel;
         // clearest:
         // let aiSeverityLevel: AI.SeverityLevel;
         // switch (traceEvent.TraceLevel) {

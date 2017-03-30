@@ -21,11 +21,11 @@ export abstract class TraceListener implements ITraceListener {
         this._traceFilter = value;
     }
 
-    public Notify(traceSource: ITraceSource, traceEvent: ITraceEvent): void {
+    public Trace(traceSource: ITraceSource, traceEvent: ITraceEvent): void {
         if (this.TraceFilter.ShouldTrace(traceSource, traceEvent)) {
-            this.NotifyInternal(traceSource, traceEvent);
+            this.OnShouldTrace(traceSource, traceEvent);
         }
     }
 
-    protected abstract NotifyInternal(traceSource: ITraceSource, traceEvent: ITraceEvent): void;
+    protected abstract OnShouldTrace(traceSource: ITraceSource, traceEvent: ITraceEvent): void;
 }

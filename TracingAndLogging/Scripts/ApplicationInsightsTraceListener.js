@@ -19,7 +19,7 @@ define(["require", "exports", "Diagnostics/TraceListener", "AI"], function (requ
             var init = new Microsoft.ApplicationInsights.Initialization(snippet);
             this._appInsights = init.loadAppInsights();
         }
-        ApplicationInsightsTraceListener.prototype.NotifyInternal = function (sender, traceEvent) {
+        ApplicationInsightsTraceListener.prototype.OnShouldTrace = function (sender, traceEvent) {
             // fastest:
             var aiSeverityLevel = 4 - traceEvent.TraceLevel;
             // clearest:

@@ -31,8 +31,12 @@ export class Trace {
     }
 
     public static Event(traceEvent: ITraceEvent): void {
-        this.TraceSources.forEach((value: ITraceSource) => {
-            value.Trace(traceEvent);
+        this.TraceSources.forEach((traceSource: ITraceSource) => {
+            try {
+                traceSource.Trace(traceEvent);
+            } catch (ex) {
+                // empty catch to prevent one listener error blocking others
+            }
         });
     }
 }

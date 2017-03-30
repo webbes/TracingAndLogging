@@ -9,7 +9,7 @@ export class ModalTraceListener extends TraceListener {
         super(traceFilter);
     }
 
-    protected NotifyInternal(sender: ITraceSource, traceEvent: ITraceEvent): void {
+    protected OnShouldTrace(sender: ITraceSource, traceEvent: ITraceEvent): void {
         alert(TraceLevel[traceEvent.TraceLevel] + ":" + traceEvent.Message);
     }
 }

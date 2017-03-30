@@ -10,7 +10,7 @@ define(["require", "exports", "./TraceLevel", "./TraceListener"], function (requ
         function ConsoleLogTraceListener(traceFilter) {
             _super.call(this, traceFilter);
         }
-        ConsoleLogTraceListener.prototype.NotifyInternal = function (sender, traceEvent) {
+        ConsoleLogTraceListener.prototype.OnShouldTrace = function (sender, traceEvent) {
             switch (traceEvent.TraceLevel) {
                 case TraceLevel_1.TraceLevel.Error:
                     console.error(traceEvent.Message);

@@ -9,7 +9,7 @@ export class ConsoleLogTraceListener extends TraceListener {
         super(traceFilter);
     }
 
-    protected NotifyInternal(sender: ITraceSource, traceEvent: ITraceEvent): void {
+    protected OnShouldTrace(sender: ITraceSource, traceEvent: ITraceEvent): void {
         switch (traceEvent.TraceLevel) {
             case TraceLevel.Error:
                 console.error(traceEvent.Message);

@@ -10,7 +10,7 @@ define(["require", "exports", "./TraceLevel", "./TraceListener"], function (requ
         function ModalTraceListener(traceFilter) {
             _super.call(this, traceFilter);
         }
-        ModalTraceListener.prototype.NotifyInternal = function (sender, traceEvent) {
+        ModalTraceListener.prototype.OnShouldTrace = function (sender, traceEvent) {
             alert(TraceLevel_1.TraceLevel[traceEvent.TraceLevel] + ":" + traceEvent.Message);
         };
         return ModalTraceListener;
