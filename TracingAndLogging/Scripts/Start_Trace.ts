@@ -5,7 +5,7 @@ import { TraceSource } from "Diagnostics/TraceSource";
 import { TraceLevel } from "Diagnostics/TraceLevel";
 import { ConsoleLogTraceListener } from "Diagnostics/ConsoleLogTraceListener";
 import { ModalTraceListener } from "Diagnostics/ModalTraceListener";
-import { ApplicationInsightsTraceListener } from "ApplicationInsightsTraceListener";
+import { ApplicationInsightsTraceListener } from "Diagnostics/ApplicationInsightsTraceListener";
 
 Trace.TraceSources.push(
     new TraceSource(new QueryStringFilter(),

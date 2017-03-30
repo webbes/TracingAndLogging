@@ -1,10 +1,10 @@
 ﻿import "AI";
 
-import { ITraceEvent } from "Diagnostics/ITraceEvent";
-import { ITraceFilter } from "Diagnostics/ITraceFilter";
-import { ITraceSource } from "Diagnostics/ITraceSource";
-// import { TraceLevel } from "Diagnostics/TraceLevel";
-import { TraceListener } from "Diagnostics/TraceListener";
+import { ITraceEvent } from "./ITraceEvent";
+import { ITraceFilter } from "./ITraceFilter";
+import { ITraceSource } from "./ITraceSource";
+// import { TraceLevel } from "./TraceLevel";
+import { TraceListener } from "./TraceListener";
 
 export class ApplicationInsightsTraceListener extends TraceListener {
     private _appInsights: Microsoft.ApplicationInsights.IAppInsights;

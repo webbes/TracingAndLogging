@@ -1,4 +1,5 @@
-﻿export * from "./BooleanFilter";
+﻿export * from "./ApplicationInsightsTraceListener";
+export * from "./BooleanFilter";
 export * from "./ConsoleLogTraceListener";
 export * from "./ITraceEvent";
 export * from "./ITraceFilter";
