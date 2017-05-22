@@ -1,5 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var TraceSource = (function () {
         function TraceSource(traceFilter) {
             var listeners = [];
@@ -34,6 +35,7 @@ define(["require", "exports"], function (require, exports) {
                     listener.Trace(_this, traceEvent);
                 }
                 catch (ex) {
+                    // empty catch to prevent one listener error blocking others
                 }
             });
         };

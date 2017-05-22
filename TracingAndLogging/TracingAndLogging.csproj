@@ -10,7 +10,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -24,11 +24,12 @@
   <ItemGroup>
     <Content Include="app.css" />
     <Content Include="index.html" />
-    <Content Include="Scripts\AI\ai.js" />
+    <Content Include="Scripts\ai.1.0.9-build01279.js" />
+    <Content Include="Scripts\ai.1.0.9-build01279.min.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\AI\ai.d.ts" />
+    <TypeScriptCompile Include="Scripts\ai.1.0.9-build01279.d.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\BooleanFilter.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\ITraceEvent.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\ITraceFilter.ts" />

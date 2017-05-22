@@ -1,8 +1,7 @@
 requirejs.config({
     "urlArgs": "v=01",
-    packages: [
-        { name: "AI", main: "ai" },
-        "Diagnostics"]
+    paths: { AI: "ai.1.0.9-build01279.min" },
+    packages: ["Diagnostics"]
 });
 require(["Start_Trace"], function () {
     require(["Main"]);

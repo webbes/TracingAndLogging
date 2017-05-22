@@ -1,5 +1,6 @@
 define(["require", "exports", "./TraceLevel", "./TraceEvent"], function (require, exports, TraceLevel_1, TraceEvent_1) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var Trace = (function () {
         function Trace() {
         }
@@ -32,12 +33,13 @@ define(["require", "exports", "./TraceLevel", "./TraceEvent"], function (require
                     traceSource.Trace(traceEvent);
                 }
                 catch (ex) {
+                    // empty catch to prevent one listener error blocking others
                 }
             });
         };
-        Trace._traceSources = new Array();
         return Trace;
     }());
+    Trace._traceSources = new Array();
     exports.Trace = Trace;
 });
 //# sourceMappingURL=Trace.js.map

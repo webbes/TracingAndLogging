@@ -1,5 +1,6 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     var BooleanFilter = (function () {
         function BooleanFilter(enabled) {
             this._enabled = enabled;
