@@ -11,6 +11,10 @@ export class ApplicationInsightsTraceListener extends TraceListener {
     constructor(traceFilter: ITraceFilter, instrumentationKey: string) {
         super(traceFilter);
 
+        if (!instrumentationKey) {
+            throw new Error("instrumentationKey cannot be null");
+        }
+
         const snippet: Microsoft.ApplicationInsights.Snippet = {
             config: {
                 instrumentationKey: instrumentationKey

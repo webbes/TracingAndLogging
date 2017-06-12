@@ -9,8 +9,14 @@ export class QueryStringFilter implements ITraceFilter {
     }
 
     public set QueryStringName(value: string) {
-        this._queryStringName = value;
-        this._initialized = false;
+        if (!value) {
+            throw new Error("QueryStringName cannot be null");
+        }
+
+        if (this._queryStringName !== value) {
+            this._queryStringName = value;
+            this._initialized = false;
+        }
     }
 
     private _initialized: boolean = false;

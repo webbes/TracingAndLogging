@@ -15,6 +15,9 @@ define(["require", "exports", "./TraceListener", "AI"], function (require, expor
         __extends(ApplicationInsightsTraceListener, _super);
         function ApplicationInsightsTraceListener(traceFilter, instrumentationKey) {
             var _this = _super.call(this, traceFilter) || this;
+            if (!instrumentationKey) {
+                throw new Error("instrumentationKey cannot be null");
+            }
             var snippet = {
                 config: {
                     instrumentationKey: instrumentationKey

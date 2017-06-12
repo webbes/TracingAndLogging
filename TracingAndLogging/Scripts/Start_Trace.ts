@@ -11,5 +11,6 @@ Trace.TraceSources.push(
     new TraceSource(new QueryStringFilter(),
         new ConsoleLogTraceListener(new TraceLevelFilter(TraceLevel.Verbose)),
         new ModalTraceListener(new TraceLevelFilter(TraceLevel.Error)),
-        new ApplicationInsightsTraceListener(new TraceLevelFilter(TraceLevel.Verbose), "b4989aa1-c6ce-47f1-8c4c-00cd9cd1ace9")
+        new ApplicationInsightsTraceListener(new TraceLevelFilter(TraceLevel.Verbose),
+            "b4989aa1-c6ce-47f1-8c4c-00cd9cd1ace9")
     ));

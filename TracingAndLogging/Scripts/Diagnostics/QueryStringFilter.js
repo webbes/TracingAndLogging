@@ -12,8 +12,13 @@ define(["require", "exports"], function (require, exports) {
                 return this._queryStringName;
             },
             set: function (value) {
-                this._queryStringName = value;
-                this._initialized = false;
+                if (!value) {
+                    throw new Error("QueryStringName cannot be null");
+                }
+                if (this._queryStringName !== value) {
+                    this._queryStringName = value;
+                    this._initialized = false;
+                }
             },
             enumerable: true,
             configurable: true

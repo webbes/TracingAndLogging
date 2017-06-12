@@ -18,7 +18,7 @@ define(["require", "exports"], function (require, exports) {
             },
             set: function (value) {
                 if (!value) {
-                    throw new Error("Value cannot be null");
+                    throw new Error("TraceFilter cannot be null");
                 }
                 this._traceFilter = value;
             },

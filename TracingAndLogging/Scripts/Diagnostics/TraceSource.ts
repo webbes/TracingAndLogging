@@ -17,7 +17,7 @@ export class TraceSource implements ITraceSource {
 
     public set TraceFilter(value: ITraceFilter) {
         if (!value) {
-            throw new Error("Value cannot be null");
+            throw new Error("TraceFilter cannot be null");
         }
 
         this._traceFilter = value;
