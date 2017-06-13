@@ -25,12 +25,9 @@
     <Content Include="app.css" />
     <Content Include="favicon-16x16.png" />
     <Content Include="index.html" />
-    <Content Include="Scripts\ai.1.0.9-build01279.js" />
-    <Content Include="Scripts\ai.1.0.9-build01279.min.js" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\ai.1.0.9-build01279.d.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\BooleanFilter.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\ITraceEvent.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\ITraceFilter.ts" />
@@ -53,7 +50,6 @@
     <TypeScriptCompile Include="Scripts\Diagnostics\TraceSource.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
     <Content Include="typings.json" />

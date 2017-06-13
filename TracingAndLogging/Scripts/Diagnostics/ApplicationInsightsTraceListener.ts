@@ -1,13 +1,11 @@
-﻿import "AI";
-
-import { ITraceEvent } from "./ITraceEvent";
+﻿import { ITraceEvent } from "./ITraceEvent";
 import { ITraceFilter } from "./ITraceFilter";
 import { ITraceSource } from "./ITraceSource";
 // import { TraceLevel } from "./TraceLevel";
+import { AppInsights } from "AppInsights";
 import { TraceListener } from "./TraceListener";
 
 export class ApplicationInsightsTraceListener extends TraceListener {
-    private _appInsights: Microsoft.ApplicationInsights.IAppInsights;
     constructor(traceFilter: ITraceFilter, instrumentationKey: string) {
         super(traceFilter);
 
@@ -15,22 +13,16 @@ export class ApplicationInsightsTraceListener extends TraceListener {
             throw new Error("instrumentationKey cannot be null");
         }
 
-        const snippet: Microsoft.ApplicationInsights.Snippet = {
-            config: {
-                instrumentationKey: instrumentationKey
-            },
-            queue: new Array<() => void>(),
-            version: "",
-        };
-
-        const init: Microsoft.ApplicationInsights.Initialization = new Microsoft.ApplicationInsights.Initialization(snippet);
-        this._appInsights = init.loadAppInsights();
+        AppInsights.downloadAndSetup({
+            url: "//az416426.vo.msecnd.net/scripts/a/ai.0.js",
+            instrumentationKey: instrumentationKey
+        });
     }
 
 
     protected OnShouldTrace(sender: ITraceSource, traceEvent: ITraceEvent): void {
         // fastest:
-        const aiSeverityLevel: AI.SeverityLevel = 4 - traceEvent.TraceLevel;
+        const aiSeverityLevel: number = 4 - traceEvent.TraceLevel;
         // clearest:
         // let aiSeverityLevel: AI.SeverityLevel;
         // switch (traceEvent.TraceLevel) {
@@ -48,6 +40,6 @@ export class ApplicationInsightsTraceListener extends TraceListener {
         //         break;
         // }
 
-        this._appInsights.trackTrace(traceEvent.Message, undefined, aiSeverityLevel);
+        AppInsights.trackTrace(traceEvent.Message, undefined, aiSeverityLevel);
     }
 }

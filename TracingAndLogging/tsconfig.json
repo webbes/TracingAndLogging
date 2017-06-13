@@ -1,19 +1,21 @@
 ﻿{
   "compilerOptions": {
-    "module": "amd",
-    "target": "es5",
+    "alwaysStrict": true,
+    "baseUrl": "./",
     "declaration": true,
     "importHelpers": true,
+    "module": "amd",
     "noEmitHelpers": true,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "strict": true,
-    "baseUrl": "./",
     "paths": {
+      "AppInsights": [ "node_modules/applicationinsights-js/JavaScript/JavaScriptSDK.Module/AppInsightsModule.js" ],
       "tslib": [ "node_modules/tslib/tslib.d.ts" ]
-    }
+    },
+    "removeComments": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "target": "es5"
   }
 }
