@@ -51,12 +51,12 @@
     <TypeScriptCompile Include="Scripts\Diagnostics\TraceEvent.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\TraceLevel.ts" />
     <TypeScriptCompile Include="Scripts\Diagnostics\TraceSource.ts" />
-    <TypeScriptCompile Include="Scripts\typings\requirejs\require.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="package.json" />
     <Content Include="tsconfig.json" />
+    <Content Include="typings.json" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

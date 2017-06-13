@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Tracing and Logging")]
-[assembly: AssemblyDescription("Motion10 Tracing and Logging library")]
+[assembly: AssemblyDescription("Tracing and Logging library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Motion10")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("TracingAndLogging.Properties")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]

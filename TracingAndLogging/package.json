@@ -1,7 +1,7 @@
 {
-  "name": "mot10_tracing_and_logging",
+  "name": "tracing_and_logging",
   "version": "1.0.0",
-  "description": "Motion10 Tracing and Logging library",
+  "description": "Tracing and Logging library",
   "main": "index.html",
   "dependencies": {
     "tslib": "^1.7.1"
