@@ -33,7 +33,6 @@ define(["require", "exports", "./TraceLevel", "./TraceEvent"], function (require
                     traceSource.Trace(traceEvent);
                 }
                 catch (ex) {
-                    // empty catch to prevent one listener error blocking others
                 }
             });
         };

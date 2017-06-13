@@ -1,0 +1,19 @@
+﻿{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es5",
+    "declaration": true,
+    "importHelpers": true,
+    "noEmitHelpers": true,
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "baseUrl": "./",
+    "paths": {
+      "tslib": [ "node_modules/tslib/tslib.d.ts" ]
+    }
+  }
+}

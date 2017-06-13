@@ -19,8 +19,8 @@ export class ApplicationInsightsTraceListener extends TraceListener {
             config: {
                 instrumentationKey: instrumentationKey
             },
-            queue: null,
-            version: null,
+            queue: new Array<() => void>(),
+            version: "",
         };
 
         const init: Microsoft.ApplicationInsights.Initialization = new Microsoft.ApplicationInsights.Initialization(snippet);
@@ -48,6 +48,6 @@ export class ApplicationInsightsTraceListener extends TraceListener {
         //         break;
         // }
 
-        this._appInsights.trackTrace(traceEvent.Message, null, aiSeverityLevel);
+        this._appInsights.trackTrace(traceEvent.Message, undefined, aiSeverityLevel);
     }
 }

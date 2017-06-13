@@ -35,7 +35,6 @@ define(["require", "exports"], function (require, exports) {
                     listener.Trace(_this, traceEvent);
                 }
                 catch (ex) {
-                    // empty catch to prevent one listener error blocking others
                 }
             });
         };
