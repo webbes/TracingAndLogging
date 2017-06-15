@@ -4,6 +4,7 @@
   "description": "Tracing and Logging library",
   "main": "index.html",
   "dependencies": {
+    "applicationinsights-js": "^1.0.9",
     "tslib": "^1.7.1"
   },
   "devDependencies": {},
