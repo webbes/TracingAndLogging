@@ -243,6 +243,11 @@ node_modules/
 # Typescript v1 declaration files
 typings/
 
+# Typescript generated files
+*.d.ts
+*.js
+*.js.map
+
 # Visual Studio 6 build log
 *.plg
 

@@ -1,6 +1,0 @@
-define(["require", "exports", "Diagnostics/Trace", "Diagnostics/TraceLevelFilter", "Diagnostics/QueryStringFilter", "Diagnostics/TraceSource", "Diagnostics/TraceLevel", "Diagnostics/ConsoleLogTraceListener", "Diagnostics/ModalTraceListener", "Diagnostics/ApplicationInsightsTraceListener"], function (require, exports, Trace_1, TraceLevelFilter_1, QueryStringFilter_1, TraceSource_1, TraceLevel_1, ConsoleLogTraceListener_1, ModalTraceListener_1, ApplicationInsightsTraceListener_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    Trace_1.Trace.TraceSources.push(new TraceSource_1.TraceSource(new QueryStringFilter_1.QueryStringFilter(), new ConsoleLogTraceListener_1.ConsoleLogTraceListener(new TraceLevelFilter_1.TraceLevelFilter(TraceLevel_1.TraceLevel.Verbose)), new ModalTraceListener_1.ModalTraceListener(new TraceLevelFilter_1.TraceLevelFilter(TraceLevel_1.TraceLevel.Error)), new ApplicationInsightsTraceListener_1.ApplicationInsightsTraceListener(new TraceLevelFilter_1.TraceLevelFilter(TraceLevel_1.TraceLevel.Verbose), "b4989aa1-c6ce-47f1-8c4c-00cd9cd1ace9")));
-});
-//# sourceMappingURL=Start_Trace.js.map
