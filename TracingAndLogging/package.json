@@ -7,10 +7,14 @@
     "applicationinsights-js": "^1.0.9",
     "tslib": "^1.7.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "typescript": "^2.3.4",
+    "typings": "^2.1.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server -a localhost -p 8080"
+    "start": "npm install && typings install && http-server -a localhost -p 8080"
   },
   "author": "Wesley Bakker",
   "license": "ISC"
