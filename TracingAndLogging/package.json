@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm install && typings install && http-server -a localhost -p 8080"
+    "start": "npm install && typings install && tsc -w && http-server -a localhost -p 8080"
   },
   "author": "Wesley Bakker",
   "license": "ISC"
