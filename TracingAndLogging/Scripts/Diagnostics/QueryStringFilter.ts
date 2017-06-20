@@ -20,7 +20,7 @@ export class QueryStringFilter implements ITraceFilter {
     }
 
     private _initialized: boolean = false;
-    private Initialize(): void {
+    private EnsureInitialization(): void {
         if (!this._initialized) {
             this._shouldTrace = false;
 
@@ -40,7 +40,7 @@ export class QueryStringFilter implements ITraceFilter {
 
     private _shouldTrace: boolean = false;
     public ShouldTrace(traceSource: ITraceSource, traceEvent: ITraceEvent): boolean {
-        this.Initialize();
+        this.EnsureInitialization();
 
         return this._shouldTrace;
     }
