@@ -14,7 +14,7 @@ To build/run/debug in Visual Studio you can hit F5, to build/run/debug in Visual
 You can then hit F5 to start debugging in Chrome.
 
 ## Use
-You can use the static Trace class method anywhere in your application:
+You can use the static Trace class methods anywhere in your application:
 
 ``` TS
 import { Trace } from "Diagnostics/Trace";
