@@ -16,6 +16,10 @@
     "postinstall": "typings install",
     "start": "http-server -a localhost -p 8080"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webbes/TracingAndLogging"
+  },
   "author": "Wesley Bakker",
   "license": "ISC"
 }
